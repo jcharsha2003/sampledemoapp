@@ -1,8 +1,9 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import {useForm} from "react-hook-form"
-import {loginContext} from '../../contexts/loginContext'
+import {loginContext} from '../../context/loginContext'
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 
 function Login() {
@@ -10,7 +11,7 @@ function Login() {
     let {register,handleSubmit,formState:{errors}}=useForm();
 
     let [currentUser,error,userLoginStatus,loginUser,logoutUser]=useContext(loginContext)
-    let [err,setErr]=useState("")
+    // let [err,setErr]=useState("")
     let handleUserLogin=(userobj)=>{
      console.log(userobj);
      loginUser(userobj)
@@ -26,6 +27,7 @@ if(userLoginStatus==true){
     console.log("error obj",errors);
   return (
     <div className='text-center'>
+      {error?.length!==0 && <p className='text-danger display-1'> {error}</p>}
   <form onSubmit={handleSubmit(handleUserLogin)}>
             <div>
               <label htmlFor="username" className="form-label">
@@ -58,18 +60,19 @@ if(userLoginStatus==true){
             </div>
 
             <div>
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="form-control bg-light w-50 m-auto"
-                {...register("email", { required: true })}
-              ></input>
-              {errors.email?.type === "required" && (
-                <p className=" text-danger">*enter your valid email id</p>
-              )}
+            <label htmlFor='password' className='form-label'>password</label>
+                <input type="password" id='password'  className='form-control bg-light w-50 m-auto'
+                 {...register("password",{required:true,minLength:4})}>
+
+                 </input>
+                {
+                    errors.password?.type==="required" && <p className=' text-danger'>*enter your password</p>
+                }
+                {
+                    errors.password?.type==="minLength" && <p className=' text-danger'>*minimum 4 password word is required</p>
+                }
+                
+                
             </div>
             
             <button

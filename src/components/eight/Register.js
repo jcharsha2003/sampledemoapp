@@ -13,11 +13,11 @@ function Register() {
 
    let formSubmit=(newUser)=>{
 
-    let fd=new FormData();
-    //append newUser to form data
-    fd.append("user",JSON.stringify(newUser))
-    //append selected file to form data
-    fd.append("photo",selectedFile)
+    // let fd=new FormData();
+    // //append newUser to form data
+    // fd.append("user",JSON.stringify(newUser))
+    // //append selected file to form data
+    
     
     axios.post("http://localhost:5000/user-api/register-user",newUser)
     .then((response)=>
