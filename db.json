@@ -1,0 +1,21 @@
+{
+  "accomodation":[
+    {
+      "bedroom":"1bedroom",
+      "price":3000
+    },
+    {
+      "bedroom":"1bedroom",
+      "price":3000
+    }
+    , {
+      "bedroom":"1bedroom",
+      "price":3000
+    },
+    {
+      "bedroom":"1bedroom",
+      "price":3000
+    }
+
+  ]
+}

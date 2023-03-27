@@ -9,8 +9,8 @@ import Register from "./components/eight/Register";
 import Aboutus from "./components/eight/Aboutus";
 import ErrorPage from "./components/eight/ErrorPage";
 import UserProfile from "./components/eight/user-profile/UserProfile";
-import Cart from "./components/eight/cart/Cart";
-import Produts from "./components/eight/products/Produts";
+
+import Accomodation from "./components/eight/products/Accomodation";
 function App() {
   const routerObj = createBrowserRouter([
     {
@@ -40,15 +40,11 @@ function App() {
           element: <UserProfile />,
           children: [
             {
-              path: "products",
-              element: <Produts />,
-             
-            },
-            {
-              path: "cart",
-              element: <Cart />,
+              path: "accomodation",
+              element: <Accomodation/>,
              
             }
+            
           ]
          
         }
