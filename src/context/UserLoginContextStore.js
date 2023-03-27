@@ -26,7 +26,8 @@ function UserLoginContextStore({children}){
 
     }
     const logoutUser=()=>{
-
+        sessionStorage.clear()
+        setUserLoginStatus(false)
     }
     return (
         <loginContext.Provider value={[currentUser,error,userLoginStatus,loginUser,logoutUser]}>{children}</loginContext.Provider>
