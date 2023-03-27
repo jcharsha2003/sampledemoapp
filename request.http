@@ -1,0 +1,61 @@
+###
+GET    http://localhost:3500/user-api/get-users
+###
+GET    http://localhost:3500/user-api/get-user/100
+###
+POST   http://localhost:3500/user-api/create-user
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"bhanu",
+    "city":"Hyderabad"
+}
+
+###
+PUT  http://localhost:3500/user-api/update-user
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"Rohit",
+    "city":"Hyderabad"
+}
+###
+DELETE  http://localhost:3500/user-api/delete-user/100
+
+# this request for products
+###
+GET    http://localhost:3500/product-api/get-products
+###
+GET    http://localhost:3500/product-api/get-product/200
+###
+POST   http://localhost:3500/product-api/create-product
+Content-Type: application/json
+
+{
+    "id":200,
+    "name":"Realme",
+    "price":"72k"
+}
+###
+PUT  http://localhost:3500/product-api/update-product
+Content-Type: application/json
+
+{
+    "id":300,
+    "name":"iPhone 14 Pro",
+    "price":"130k"
+}
+###
+DELETE  http://localhost:3500/product-api/delete-product/300
+
+###
+POST   http://localhost:5000/u/r
+Content-Type: application/json
+
+{
+    "username":"bhanu",
+    "password":"bhanu",
+    "email":"bhanu@2002gmail.com"
+}
