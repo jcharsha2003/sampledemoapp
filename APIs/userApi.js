@@ -113,7 +113,7 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
      //create a JWT token
        let jwtToken=jwt.sign({username:userOfDB.username},'abcdef',{expiresIn:20})
      //send token in response
-     response.status(200).send({message:"Valid user",token:jwtToken,user:userOfDB})
+     response.status(200).send({message:"success",token:jwtToken,user:userOfDB})
    }
   }
  

@@ -1,17 +1,32 @@
 import React from 'react'
-
+import { useEffect } from 'react';
 import {useForm} from "react-hook-form"
+import {loginContext} from '../../contexts/loginContext'
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
+  let navigate=useNavigate()
     let {register,handleSubmit,formState:{errors}}=useForm();
 
-    let formSubmit=(userobj)=>{
+    let [currentUser,error,userLoginStatus,loginUser,logoutUser]=useContext(loginContext)
+    let [err,setErr]=useState("")
+    let handleUserLogin=(userobj)=>{
      console.log(userobj);
+     loginUser(userobj)
+
     }
+    useEffect(()=>{
+if(userLoginStatus==true){
+  navigate("/user-profile")
+}
+    },[userLoginStatus])
+
+    console.log("current user",currentUser)
     console.log("error obj",errors);
   return (
     <div className='text-center'>
-  <form onSubmit={handleSubmit(formSubmit)}>
+  <form onSubmit={handleSubmit(handleUserLogin)}>
             <div>
               <label htmlFor="username" className="form-label">
                 UserName
