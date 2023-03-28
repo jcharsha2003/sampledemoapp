@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container';
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { loginContext } from '../../context/loginContext';
@@ -12,12 +12,12 @@ function NavbarMain() {
   return (
     
     <Navbar bg="light" expand="lg" className='p-0 hello'>
-    <Container >
-    <Navbar.Brand to="/">
+    <div className='container-fluid mx-3'  >
+    <Navbar.Brand to="/" className='hello1 rounded '>
             <img
               src="https://static.thenounproject.com/png/4962285-200.png"
-              width="70"
-              height="60"
+              width="60"
+              height="50"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
@@ -41,7 +41,7 @@ function NavbarMain() {
       
       ( <li className="nav-item dropdown">
        
-      <Link className="nav-link "   style={{padding:"1.3rem"}} to="/login">Logout</Link>
+      <Link className="nav-link "   style={{padding:"1.3rem"}} to="/login">Services</Link>
       
       </li>)}
       
@@ -61,7 +61,7 @@ function NavbarMain() {
           
         </Nav>
       </Navbar.Collapse>
-    </Container>
+    </div >
   </Navbar>
   )
 }

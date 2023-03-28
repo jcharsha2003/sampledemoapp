@@ -15,10 +15,10 @@ userapp.get("/get-users",expressAsyncHandler(async(request,response)=>{
     
   }))
 
-userapp.get("/get-user/:id",expressAsyncHandler(async(request,response)=>{
+userapp.get("/get-user/:username",expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
-  let userObj=await userCollection.findOne({id:(+request.params.id)})
+  let userObj=await userCollection.findOne({username:(request.params.username)})
   response.status(200).send({message:"user list",payload:userObj})
   }))
 

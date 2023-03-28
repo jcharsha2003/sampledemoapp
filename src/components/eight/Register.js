@@ -92,7 +92,7 @@ function Register() {
                 
             </div>
           </div>
-          {/* second row for date of birth and gender */}
+          {/* second row for date of birth  */}
           <div className='row row-cols-1 row-cols-sm-2'>
             <div className='col'>
                 <label htmlFor='dob'  className='form-label'>date of birth</label>
