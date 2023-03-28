@@ -25,7 +25,7 @@ function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          src="https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -36,7 +36,7 @@ function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          src=""
           alt="Second slide"
         />
 
@@ -48,7 +48,7 @@ function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src="https://static.wixstatic.com/media/8b2558_51614afd2efe4d1291b696172a127324~mv2.jpg/v1/fill/w_850,h_624,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/8b2558_51614afd2efe4d1291b696172a127324~mv2.jpg"
           alt="Third slide"
         />
 
