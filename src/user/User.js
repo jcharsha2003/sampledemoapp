@@ -6,8 +6,10 @@ import {loginContext} from '../context/loginContext'
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import './User.css'
+
+
 
 
 
@@ -15,44 +17,58 @@ import Modal from 'react-bootstrap/Modal';
 function User() {
 
 
-
-    let {register,handleSubmit,setValue,formState:{errors}}=useForm();
+    let [error,setError]=useState("")
+    let {register,handleSubmit,setValue,getValues,formState:{errors}}=useForm();
     const [show, setShow] = useState(false);
     const [userToEdit, setUserToEdit] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+    const getUsers=()=>{
+        axios.get(`http://localhost:5000/user-api/get-user/${currentUser.username}`)
+        .then(response=>{setData(response.data.payload)
+        console.log(response.data.payload)
+        }
+        )
+        .catch((err)=>
+        {
+            if(err.response){
+                setError(err.message)
+                console.log(err.response)
+            }
+            else if(err.request){
+                setError(err.message)
+    
+            }
+            else{
+                setError(err.message)
+            }
+        })
+    }
+
+
 // edit user
   const editUser=(userObj)=>{
     handleShow()
     setUserToEdit(userObj)
+    setValue("username",userObj.username)
+    setValue("dob",userObj.dob)
+    setValue("email",userObj.email)
+    setValue("phone",userObj.phone)
+
   }
 //   saveModifiedUser
   const saveModifiedUser=()=>{
     handleClose()
-  }
-
-
-  let formSubmit=(newUser)=>{
-
-    // let fd=new FormData();
-    // //append newUser to form data
-    // fd.append("user",JSON.stringify(newUser))
-    // //append selected file to form data
+    let modifieduser=getValues()
     
-    
-    axios.post("http://localhost:5000/user-api/register-user",newUser)
-    .then((response)=>
-    {
-        if(response.status===201){
-         navigate("/login")
-        }
-        if(response.status!==201){
-           setError(response.data.message)
-          
-           }
-    }
-    )
+    axios.put("http://localhost:5000/user-api/update-user",modifieduser)
+    .then(response=>{ 
+        if(response.status===200){
+        getUsers()
+       }})
     .catch((err)=>
     {
         if(err.response){
@@ -67,35 +83,30 @@ function User() {
             setError(err.message)
         }
     })
+  }
 
-
-   }
 
 
 
     let [data,setData]=useState({})
-    let [currentUser,error,userLoginStatus,loginUser,logoutUser]=useContext(loginContext)
+    let [currentUser]=useContext(loginContext)
     useEffect(()=>{
-        axios.get(`http://localhost:5000/user-api/get-user/${currentUser.username}`)
-        .then(response=>{setData(response.data.payload)
-        console.log(response.data.payload)
-        }
-        )
-        .catch(err=>console.error(err))
+       getUsers()
 
     },[])
   return (
     <div>User
         <div className='m-auto d-block'>
-        
+        {error?.length!==0 && <p className='text-danger display-1'> {error}</p>}
        
-    <Card style={{ width: '18rem' }} className="text-center">
+    <Card style={{ width: '18rem' }} >
       <Card.Body>
         <Card.Title>{data.username}</Card.Title>
         <Card.Text>
-          {data.email}
-          {data.dob}
-          {data.phone}
+            <div>{data.dob}</div>
+          <div>{data.email}</div>
+          <div> {data.phone}</div>
+         
         </Card.Text>
         <Button variant="secondary" onClick={()=>editUser(data)}>Edit<i class="fas fa-edit"></i></Button>
       </Card.Body>
@@ -107,12 +118,12 @@ function User() {
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form  onSubmit={handleSubmit(formSubmit)}>
+        <form  onSubmit={handleSubmit(saveModifiedUser)}>
           <div className='row row-cols-1 row-cols-sm-2'>
             <div className='col'>
                 <label htmlFor='username'  className='form-label'>User Name</label>
                 <input type="text" id='username'  className='form-control bg-light' 
-                {...register("username",{required:true,minLength:6,maxLength:10})}
+                {...register("username",{required:true,minLength:6,maxLength:10})} disabled
                 ></input>
                 {
                     errors.username?.type==="required" && <p className=' text-danger'>*enter your first name</p>

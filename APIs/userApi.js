@@ -44,8 +44,7 @@ userapp.put("/update-user",expressAsyncHandler(async(request,response)=>{
     // get userCollection
     const userCollection=request.app.get("userCollection")
     let modifieduser=request.body;
-   await userCollection.updateOne({id:modifieduser.id},{$set:{...modifieduser}})
-   
+     await userCollection.updateOne({username:modifieduser.username},{$set:{...modifieduser}})
       response.status(200).send({message:"user has been modified successfully"})
     
   }))
