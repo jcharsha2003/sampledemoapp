@@ -9,8 +9,10 @@ import Register from "./components/eight/Register";
 import Aboutus from "./components/eight/Aboutus";
 import ErrorPage from "./components/eight/ErrorPage";
 import UserProfile from "./components/eight/user-profile/UserProfile";
-
+import Job from "./components/eight/jobs/Job";
+import Health from "./components/eight/health/Health";
 import Accomodation from "./components/eight/products/Accomodation";
+import User from "./user/User";
 function App() {
   const routerObj = createBrowserRouter([
     {
@@ -36,12 +38,25 @@ function App() {
          
         },
         {
+          path: "/user",
+          element: <User />,
+         
+        },
+        {
           path: "/user-profile",
           element: <UserProfile />,
           children: [
             {
               path: "accomodation",
               element: <Accomodation/>,
+             
+            },{
+              path: "job",
+              element: <Job/>,
+             
+            },{
+              path: "health",
+              element: <Health/>,
              
             }
             
