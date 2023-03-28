@@ -37,9 +37,9 @@ function Accomodation() {
                 <div className="card-body">
                     <div className="row">
                          <div className="col-sm-6 m-auto">
-                            <h1 className="text-black fs-1 fw-bold">{element.bedroom}</h1>
-                            <p className="lead text-black fs-4 fw-bold">{element.price}</p>
-                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5">Book</button>
+                            {/* <h1 className="text-black fs-1 fw-bold">Number of bedrooms:{element.bedroom}</h1>
+                            <p className="lead text-black fs-4 fw-bold">Price:{element.price}</p> */}
+                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5"><a className='text-decoration-none text-whit' href='https://www.oyorooms.com/?utm_device=c&utm_adgroup=143959616297'>Accomodation</a>  </button>
                         </div>
                         <div className="col-sm-6">
                             

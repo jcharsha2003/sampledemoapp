@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect,useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Alert from '../products/Alert';
-import Button from 'react-bootstrap/Button';
+
 
 
 function Job() {
@@ -40,25 +40,47 @@ function Job() {
  console.log(data1)
   return (
     <div><Alert alert={alert} setBoth={setBoth}/>
-    <div>Job
-      <div className='row row-cols-1 row-cols-sm-1 row-cols-md-2 gx-10'>
-      <div className='col-sm-6'>
+    <div className='container'>Job
+      <div className='row row-cols-1 row-cols-sm-1  gy-10 '>
+      <div className='col-sm-11'>
         <h1>Jobs</h1>
       { 
         data?.map((element)=>(
           <div  key={element._id}>
-            <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={element.image} />
-      <Card.Body>
-        
-        <Card.Title>{element.company}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="secondary" onClick={()=>showAlert("Successfully booked your room","success")}>Apply</Button>
-      </Card.Body>
-    </Card>
+       
+    <div className="card m-5" >
+                <div className="card-body">
+                    <div className="row">
+                         <div className="col-sm-6 m-auto">
+                            {/* <h1 className="text-black fs-1 fw-bold">{element.company}</h1> */}
+                            <p className="lead text-black fs-4 fw-bold">Our shelter residents and students love participating in interactive workshops that are educational and fun.
+
+So, if you’re an expert/facilitator, reach out to us!
+We organize workshops on the following themes:
+                            <ul class="list-group">
+  <li class="list-group-item active">Computers</li>
+  <li class="list-group-item">
+
+  Sports and Yoga
+</li>
+  <li class="list-group-item">
+  Creative Arts</li>
+  <li class="list-group-item">Primary Education 
+</li>
+<li class="list-group-item">Basket Weaving
+</li>
+  
+</ul></p>
+                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5">Apply now</button>
+                        </div>
+                        <div className="col-sm-6">
+                            
+                            <Card.Img variant="top" src={element.image} className="w-100" />
+                         </div>
+                       
+                    </div>
+                </div>
+            </div>
 
           </div>
           
@@ -66,23 +88,39 @@ function Job() {
         ))
       }
       </div>
-      <div className='col-sm-6'>
-      <h1>WorkShop</h1>
+      <div className='col-sm-11'>
+      <h1>Job opportunities</h1>
       { 
         data1?.map((element)=>(
           <div  key={element._id}>
-            <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={element.image} />
-      <Card.Body>
-        
-        <Card.Title>{element.work}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="secondary" onClick={()=>showAlert("Successfully booked your room","success")}>Apply</Button>
-      </Card.Body>
-    </Card>
+       
+    <div className="card m-5" key={element._id}>
+    <div className="col-sm-6">
+                            
+                            <Card.Img variant="top" src={element.image} className="w-100" />
+                         </div>
+                <div className="card-body">
+                    <div className="row">
+                         <div className="col-sm-6 m-auto">
+                            <h1 className="text-black fs-1 fw-bold">{element.company}</h1>
+                            <p className="lead text-black fs-4 fw-bold">We offer multiple opportunities for the youth to get involved in field action and gain grassroot experience in the following areas: 
+                            <ul class="list-group">
+  <li class="list-group-item active">Social Care Worker</li>
+  <li class="list-group-item">
+Teaching and Mentorship
+</li>
+  <li class="list-group-item">
+Content Writer</li>
+  <li class="list-group-item">Designer/ Photographer</li>
+  
+</ul></p>
+                          <button onClick={()=>showAlert("Successfully booked your room","success")} className="btn btn-dark p-3 fw-bold fs-5">Book</button>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
 
           </div>
           

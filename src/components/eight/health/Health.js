@@ -38,9 +38,11 @@ function Health() {
                 <div className="card-body">
                     <div className="row">
                          <div className="col-sm-6 m-auto">
-                            <h1 className="text-black fs-1 fw-bold">{element.care}</h1>
-                            <p className="lead text-black fs-4 fw-bold">{element.price}</p>
-                          <button onClick={()=>showAlert("Appointment booked succesfully","success")} className="btn btn-dark p-3 fw-bold fs-5">Book</button>
+                            {/* <h1 className="text-black fs-1 fw-bold">{element.care}</h1>
+                            <p className="lead text-black fs-4 fw-bold">{element.price}</p> */}
+                            <h1 className="text-black fs-1 fw-bold">Health Care</h1>
+                          <button onClick={()=>showAlert("Appointment booked succesfully","success")} className="btn btn-dark p-3 fw-bold fs-5"><a className='text-decoration-none text-whit' href='https://www.apollo247.com/specialties'>Appointment</a></button>
+                          
                         </div>
                         <div className="col-sm-6">
                             
